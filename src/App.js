@@ -7,7 +7,7 @@ class App extends Component {
     super();
     this.state = {
       foundSkills: {},
-      resume: 'This is the resume'
+      resume: ''
     };
   }
   async componentDidMount () {
