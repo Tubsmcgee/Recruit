@@ -1,26 +1,62 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
+import {getTransformedSkills} from './skillStuff.js';
 
 class App extends Component {
+  constructor () {
+    super();
+    this.state = {
+      foundSkills: {},
+      resume: 'This is the resume'
+    };
+  }
+  async componentDidMount () {
+    this.setState({
+      skills: await getTransformedSkills()
+    });
+  }
+  processResume = ({target: {value: resume}}) => {
+    var foundSkills = {};
+
+  	this.state.skills.forEach(skill => {
+  	  if (skill.regex.test(resume)){
+  	    if (!foundSkills[skill.type]) foundSkills[skill.type] = [];
+  		  foundSkills[skill.type].push(skill);
+  	  }
+  	});
+
+    this.setState({foundSkills, resume});
+  }
   render() {
+    const {foundSkills, resume} = this.state;
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
+      <>
+        <h1>Skill Grid Creator</h1>
+
+        <textarea
+          className="resume"
+          onChange={this.processResume}
+          value={resume}
+        ></textarea>
+
+        {
+          Object.keys(foundSkills).map(typeName => (
+            <div key={typeName}>
+              <div className="typeName">{ typeName }</div>
+              {
+                foundSkills[typeName].map((skill, i, arr) =>
+                  <span key={skill.name} className="skillList">
+                    { skill.name + (i === arr.length - 1 ? ' ' : ', ') }
+                  </span>
+                )
+              }
+              <br/>
+              <br/>
+            </div>
+          ))
+        }
+
+      </>
     );
   }
 }
