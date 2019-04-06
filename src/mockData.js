@@ -6,11 +6,15 @@ export const getCategories = async () => [
 ];
 
 export const getMockSkills = async () => [
-  {name: "C#", type: 'Languages', regex: 'c#(.net)?'},
+  {name: 'C#', type: 'Languages', regex: 'c#(.net)?'},
   {name: 'Java', type: 'Languages', regex: 'java(?! script)'},
   {name: 'SQL', type: 'Languages', regex: 'sql(?! server)'},
-  {name: 'VB', type: 'Languages', regex: '(vb|visual basic)(?! (.net|script|a))'},
-  {name: "VB.NET", type: 'Languages', regex: '(vb|visual basic).net'},
+  {
+    name: 'VB',
+    type: 'Languages',
+    regex: '(vb|visual basic)(?! (.net|script|a))'
+  },
+  {name: 'VB.NET', type: 'Languages', regex: '(vb|visual basic).net'},
   {name: 'JavaScript', type: 'Languages', regex: 'java script'},
   {name: 'HTML', type: 'Languages', regex: 'html'},
   {name: 'CSS', type: 'Languages', regex: 'css'},
@@ -23,7 +27,7 @@ export const getMockSkills = async () => [
   {name: 'PL/SQL', type: 'Languages', regex: 'pl (\\/|\\*|\\-)? sql'},
   {name: 'Swift', type: 'Languages', regex: 'swift'},
   {name: 'C', type: 'Languages', regex: 'c(?!\\+|#)\\b'},
-  {name: 'Ada', type: 'Languages', regex:'ada\\b'},
+  {name: 'Ada', type: 'Languages', regex: 'ada\\b'},
   {name: 'CICS', type: 'Languages', regex: 'cics'},
   {name: 'COBOL', type: 'Languages', regex: 'cobol'},
   {name: 'DHTML', type: 'Languages', regex: 'dhtml'},
@@ -57,7 +61,11 @@ export const getMockSkills = async () => [
   {name: 'ColdFusion', type: 'Web/Middleware', regex: 'cold fusion'},
   {name: 'Hibernate', type: 'Web/Middleware', regex: 'hibernate'},
   {name: 'WebSphere', type: 'Web/Middleware', regex: 'web sphere'},
-  {name: 'IIS', type: 'Web/Middleware', regex: '(iis|internet information services)'},
+  {
+    name: 'IIS',
+    type: 'Web/Middleware',
+    regex: '(iis|internet information services)'
+  },
   {name: 'jQuery', type: 'Web/Middleware', regex: 'j query'},
   {name: 'KnockoutJS', type: 'Web/Middleware', regex: 'knockout(.js)?'},
   {name: 'J2EE', type: 'Web/Middleware', regex: 'j2ee'},
@@ -89,7 +97,7 @@ export const getMockSkills = async () => [
   {name: 'UNIX', type: 'Operating Systems', regex: 'unix(?! aix|solaris)'},
   {name: 'UNIX Solaris', type: 'Operating Systems', regex: 'unix solaris'},
   {name: 'MacOS', type: 'Operating Systems', regex: 'macos'},
-  {name: 'UNIX AIX', type: 'Operating Systems', regex: ('unix aix|aix')},
+  {name: 'UNIX AIX', type: 'Operating Systems', regex: 'unix aix|aix'},
   {name: 'Windows Server', type: 'Operating Systems', regex: 'windows server'},
   {name: 'VMware', type: 'Operating Systems', regex: 'vmware'},
   {name: 'iOS', type: 'Operating Systems', regex: 'ios\\b'},
@@ -100,7 +108,11 @@ export const getMockSkills = async () => [
   {name: 'Zookeeper', type: 'Big Data', regex: 'zookeeper'},
   {name: 'Oozie', type: 'Big Data', regex: 'oozie'},
   {name: 'Cloudera', type: 'Big Data', regex: 'cloudera'},
-  {name: 'HDFS', type: 'Big Data', regex: '(hdfs | hadoop distributed file system)'},
+  {
+    name: 'HDFS',
+    type: 'Big Data',
+    regex: '(hdfs | hadoop distributed file system)'
+  },
   {name: 'MapReduce', type: 'Big Data', regex: 'map reduce'},
   {name: 'NiFi', type: 'Big Data', regex: 'nifi'},
   {name: 'Hive', type: 'Big Data', regex: 'hive'},
@@ -128,7 +140,11 @@ export const getMockSkills = async () => [
   {name: 'Sybase', type: 'Databases', regex: 'sybase'},
   {name: 'HBase', type: 'Databases', regex: 'hbase'},
   {name: 'Cassandra', type: 'Databases', regex: 'cassandra'},
-  {name: 'Active Directory', type: 'Tools', regex: '(active directory|(ad\\b))'},
+  {
+    name: 'Active Directory',
+    type: 'Tools',
+    regex: '(active directory|(ad\\b))'
+  },
   {name: 'Informatica', type: 'Tools', regex: 'informatica'},
   {name: 'SharePoint', type: 'Tools', regex: 'share point'},
   {name: 'Pentaho', type: 'Tools', regex: 'pentaho'},
@@ -165,7 +181,7 @@ export const getMockSkills = async () => [
   {name: 'SSIS', type: 'Tools', regex: 'ssis'},
   {name: 'SSRS', type: 'Tools', regex: 'ssrs'},
   {name: 'SSAS', type: 'Tools', regex: 'ssas'},
-  {name: "TFS", type: 'Tools', regex: '(tfs|team foundation server)'},
+  {name: 'TFS', type: 'Tools', regex: '(tfs|team foundation server)'},
   {name: 'Git', type: 'Tools', regex: 'git'},
   {name: 'Subversion', type: 'Tools', regex: 'subversion'},
   {name: 'Tivoli', type: 'Tools', regex: 'tivoli'},
