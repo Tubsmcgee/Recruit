@@ -1,5 +1,9 @@
 const fs = require('fs');
 
-const file = fs.readFileSync('build/index.html').toString();
-const replaced = file.replace(/\/(static|manifest|favicon)/g, (full, partial) => partial);
-fs.writeFileSync('build/index.html', replaced);
+fs.readdirSync('build').forEach(filename => {
+  const fn = 'build/' + filename;
+  if (fs.lstatSync(fn).isDirectory()) return;
+  const file = fs.readFileSync(fn).toString();
+  const replaced = file.replace(/\/(static|manifest|favicon|index|precache|service)/g, (full, partial) => partial);
+  fs.writeFileSync(fn, replaced);
+});
