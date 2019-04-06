@@ -1,41 +1,63 @@
 import React, { Component } from 'react';
 import './App.css';
 import {getTransformedSkills} from './skillStuff.js';
+import {getCategories} from './mockData.js';
+
+const CategorySelect = ({categories, value, onChange}) => (
+  <select value={value} onChange={onChange}>
+    {
+      categories.map(({name}) =>
+        <option key={name} value={name}>{name}</option>
+      )
+    }
+  </select>
+)
 
 class App extends Component {
   constructor () {
     super();
     this.state = {
-      foundSkills: {},
-      resume: ''
+      skills: [],
+      resume: localStorage.resume || '',
+      categories: [],
+      category: ''
     };
   }
   async componentDidMount () {
     this.setState({
-      skills: await getTransformedSkills()
+      skills: await getTransformedSkills(),
+      categories: await getCategories()
     });
   }
-  processResume = ({target: {value: resume}}) => {
-    var foundSkills = {};
-
-  	this.state.skills.forEach(skill => {
-  	  if (skill.regex.test(resume)){
-  	    if (!foundSkills[skill.type]) foundSkills[skill.type] = [];
-  		  foundSkills[skill.type].push(skill);
-  	  }
-  	});
-
-    this.setState({foundSkills, resume});
+  changeResume = ({target: {value: resume}}) => {
+    localStorage.resume = resume;
+    this.setState({resume});
+  }
+  changeCategory = ({target: {value: category}}) => {
+    this.setState({category});
   }
   render() {
-    const {foundSkills, resume} = this.state;
+    const {resume, categories, category, skills} = this.state;
+    const foundSkills = {};
+
+  	skills
+      .filter(skill => skill.regex.test(resume))
+      .forEach(skill => {
+        if (!foundSkills[skill.type]) foundSkills[skill.type] = [];
+        foundSkills[skill.type].push(skill);
+    	});
+
     return (
       <>
+        <div style={{float: 'right'}}>
+          <CategorySelect value={category} categories={categories} onChange={this.changeCategory}/>
+        </div>
+
         <h1>Skill Grid Creator</h1>
 
         <textarea
           className="resume"
-          onChange={this.processResume}
+          onChange={this.changeResume}
           value={resume}
         ></textarea>
 

@@ -1,6 +1,11 @@
 /* Make sure mock data is async! Otherwise you'll be refactoring a lot of code later */
 
-export const getMockSkills = async => [
+export const getCategories = async () => [
+  {name: 'Microsoft', skills: []},
+  {name: 'Java', skills: []}
+];
+
+export const getMockSkills = async () => [
   {name: "C#", type: 'Languages', regex: 'c#(.net)?'},
   {name: 'Java', type: 'Languages', regex: 'java(?! script)'},
   {name: 'SQL', type: 'Languages', regex: 'sql(?! server)'},
