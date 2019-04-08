@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import './App.css';
 import {getTransformedSkills} from './skillStuff.js';
 import {getCategories} from './mockData.js';
 
@@ -68,12 +67,9 @@ class App extends Component {
         {Object.keys(foundSkills).map(typeName => (
           <div key={typeName}>
             <div className="typeName">{typeName}</div>
-            {foundSkills[typeName].map((skill, i, arr) => (
-              <span key={skill.name} className="skillList">
-                {skill.name + (i === arr.length - 1 ? ' ' : ', ')}
-              </span>
-            ))}
-            <br />
+            <div className="skillList">
+              {foundSkills[typeName].map(s => s.name).join(', ')}
+            </div>
             <br />
           </div>
         ))}
